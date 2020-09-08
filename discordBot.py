@@ -141,6 +141,22 @@ async def enable(ctx):
             await ctx.message.channel.send("Referral Deleter is now on.")
         else:
             await ctx.message.channel.send("Referral Deleter is now off.")
+            
+@client.command()
+async def futures(ctx):
+    import imgkit
+    import cv2
+    options = {
+        'format': 'png',
+        'crop-h': '355',
+        'crop-w': '250',
+        'crop-x': '355',
+        'crop-y': '160',
+        'encoding': "UTF-8"
+    }
+    imgkit.from_url('https://money.cnn.com/data/premarket/', 'out1.jpg', options=options)
+    image_cv2 = cv2.imread(r'out1.jpg')
+    await ctx.channel.send(image_cv2)
 
 
 @client.command()
